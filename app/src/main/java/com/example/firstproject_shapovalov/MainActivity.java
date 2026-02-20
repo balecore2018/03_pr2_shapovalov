@@ -2,6 +2,8 @@ package com.example.firstproject_shapovalov;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,21 +16,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
 
     public void onStepAge(View view){
+        EditText _name = findViewById(R.id.name);
+        String strName = _name.getText().toString();
+
         setContentView(R.layout.step_2);
+
+        TextView tv = findViewById(R.id.textView);
+        tv.setText("Очень приятно познакомиться, "+strName+".\nМеня зовут Бисквит.\n Сколько тебе лет?");
     }
 
     public void onStepSex(View view){
+        EditText _age = findViewById(R.id.age);
+        String strAge = _age.getText().toString();
+
         setContentView(R.layout.step_3);
+
+        TextView tv = findViewById(R.id.textView);
+        tv.setText("Ничего себе ты большой, целых "+strAge+" лет\nКакого ты пола?");
     }
     public void onStepEmail(View view){
         setContentView(R.layout.step_4);
